@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>探照灯 - Memory</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u63a2\u7167\u706f";
+    var mkdocs_page_input_path = "\u63a2\u7167\u706f.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Memory</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">WPF Blend</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../%E5%8F%98%E8%89%B2%E5%9C%86%E5%9C%88loading/">变色圆圈loading</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../%E6%AC%A2%E8%BF%8ELogo%E6%B8%90%E5%8F%98%E5%92%8C%E6%94%BE%E5%A4%A7%E7%BC%A9%E5%B0%8F/">欢迎Logo渐变和放大缩小</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">探照灯</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#blend">参考大神的教程，主要是为了熟悉blend的操作，学习动画效果  教程</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#microsoft-expression-blend4">使用的软件：Microsoft Expression Blend4</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C++</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../%E5%88%A4%E6%96%ADc%2B%2BHANDLE%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%90%A6%E6%9C%89%E6%95%88/">解决记录</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Memory</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>WPF Blend &raquo;</li>
+        
+      
+    
+    <li>探照灯</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="wpfblendfunui">[WPF+Blend+FunUI]探照灯</h1>
+<h5 id="blend">参考大神的教程，主要是为了熟悉blend的操作，学习动画效果  <a href="https://www.cnblogs.com/lonelyxmas/"><em>教程</em></a></h5>
+<h5 id="microsoft-expression-blend4">使用的软件：Microsoft Expression Blend4</h5>
+<p><img alt="SearchLight" src="../img/SearchLight.gif" /></p>
+<p>因为做的过程没有截图，所以就把实现方法描述一下</p>
+<p><img alt="1563260883060" src="../img/1563260883060.png" /></p>
+<p>控件组成就是一个TextBlock和Path，其中Path由一个矩形和椭圆形组成。</p>
+<p><img alt="1563261015074" src="../img/1563261015074.png" /></p>
+<p>矩形要够长，足够圆形部分移动到每一个字，且圆形以外的部分被矩形覆盖，矩形有要一定的透明度，不然就一个⚪不好看。 </p>
+<p>这个Path的绘制：1.先画一个透明度80%的矩形作为覆盖层，然后在文字旁边画一个和文字等高或大于文字高度适量的⚪； 2.在对象和时间线窗口里选中矩形，然后按住shift，再选中圆形，右键菜单选择合并-&gt;相减。</p>
+<p>！！！注意一定要先选中矩形，然后一定要先画矩形。</p>
+<p>接下来只要选中path 按<img alt="1563261582355" src="../img/1563261582355.png" />这里的＋号，添加了一个动画。下面只要选中时间轴，然后吧path放到想放的地方就好了</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../%E5%88%A4%E6%96%ADc%2B%2BHANDLE%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%90%A6%E6%9C%89%E6%95%88/" class="btn btn-neutral float-right" title="解决记录">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../%E6%AC%A2%E8%BF%8ELogo%E6%B8%90%E5%8F%98%E5%92%8C%E6%94%BE%E5%A4%A7%E7%BC%A9%E5%B0%8F/" class="btn btn-neutral" title="欢迎Logo渐变和放大缩小"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../%E6%AC%A2%E8%BF%8ELogo%E6%B8%90%E5%8F%98%E5%92%8C%E6%94%BE%E5%A4%A7%E7%BC%A9%E5%B0%8F/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../%E5%88%A4%E6%96%ADc%2B%2BHANDLE%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%90%A6%E6%9C%89%E6%95%88/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
